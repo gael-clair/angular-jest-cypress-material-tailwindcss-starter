@@ -1,0 +1,5 @@
+{
+  "supportFile": "cypress/support/index.ts",
+  "screenshotsFolder": "reports/e2e/screenshots",
+  "videosFolder": "reports/e2e/videos"
+}
