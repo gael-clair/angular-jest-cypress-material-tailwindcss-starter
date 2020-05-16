@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "init": "cross-var npx replace-in-file /test/gi \"$npm_package_name\" package.json,angular.json,src/app/app.component.ts,/src/app/app.component.spec.ts --isRegex",
+    "init": "cross-var npx replace-in-file /angular-jest-cypress-material-tailwindcss-starter/gi \"$npm_package_name\" package.json,angular.json,src/app/app.component.ts,/src/app/app.component.spec.ts --isRegex",
     "ng": "ng",
     "prestart": "ngtw build",
     "start": "concurrently -k -c \"green,yellow\" -n \"Serve,TailwindCSS\" \"ng serve\" \"ngtw watch\"",
