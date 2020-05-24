@@ -46,19 +46,19 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build
-        run: npm run build:prod
+        run: yarn build:prod
 
       - name: Create reports folder
         run: mkdir $REPORTS_FOLDER
 
       - name: Lint code
-        run: npm run lint:ci
+        run: yarn lint:ci
 
       - name: Lint style
-        run: npm run lint:style:ci
+        run: yarn lint:style:ci
 
       - name: Run unit tests with coverage
-        run: npm run test:ci
+        run: yarn test:ci
 
       - name: Coveralls unit tests
         uses: coverallsapp/github-action@master
@@ -69,7 +69,7 @@ jobs:
           parallel: true
 
       - name: Run End-to-End tests with coverage
-        run: npm run e2e:ci
+        run: yarn e2e:ci
 
       - name: Coveralls unit tests
         uses: coverallsapp/github-action@master
