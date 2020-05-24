@@ -34,6 +34,7 @@
     - [TailwindCSS](#tailwindcss)
   - [Unit tests with Jest](#unit-tests-with-jest)
   - [End-to-End tests with Cypress](#end-to-end-tests-with-cypress)
+  - [Extending TSLint](#extending-tslint)
   - [Formatting with Prettier](#formatting-with-prettier)
   - [Style linting with Stylelint](#style-linting-with-stylelint)
   - [Git hooks](#git-hooks)
@@ -603,6 +604,22 @@ $ yarn ng add @briebug/cypress-schematic --noBuilder
         $ yarn remove jasmine-core jasmine-spec-reporter @types/jasmine @types/jasminewd2
         ```
 
+### Extending TSLint
+
+1.  Install TSLint preset for Angular:
+
+```sh
+$ yarn add -D tslint-angular
+```
+
+2.  Add `tslint-angular` preset to extends array in `tslint.json`:
+
+```json
+{
+  "extends": ["tslint:recommended", "tslint-angular"]
+}
+```
+
 ### Formatting with Prettier
 
 1.  Install Prettier and dependencies to deal with Typescript and linters:
@@ -623,14 +640,15 @@ $ yarn add -D prettier tslint-config-prettier tslint-plugin-prettier
 }
 ```
 
-3.  Add `tslint-config-prettier` preset and `tslint-plugin-prettier` plugin to `tslint.json` to prevent TSLint to use rules that Prettier will take care of:
+3.  Add `tslint-config-prettier` preset to extends array in `tslint.json` to prevent TSLint to use rules that Prettier will take care of, activate prettier in rules and add `tslint-plugin-prettier` to rulesDirectory:
 
 ```json
 {
-  "extends": ["tslint:recommended", "tslint-plugin-prettier", "tslint-config-prettier"],
+  "extends": ["tslint:recommended", "tslint-angular", "tslint-config-prettier"],
   "rules": {
     "prettier": true
-  }
+  },
+  "rulesDirectory": ["codelyzer", "tslint-plugin-prettier"]
 }
 ```
 
@@ -844,6 +862,7 @@ $ yarn add -D @compodoc/compodoc
 
 - Linting:
 
+  - [tslint-angular](https://www.npmjs.com/package/tslint-angular)
   - [stylelint](https://stylelint.io/)
   - [stylelint-config-recommended](https://www.npmjs.com/package/stylelint-config-recommended)
   - [stylelint-junit-formatter](https://www.npmjs.com/package/stylelint-junit-formatter)
@@ -852,7 +871,7 @@ $ yarn add -D @compodoc/compodoc
   - [stylelint-prettier](https://www.npmjs.com/package/stylelint-prettier)
 
   ```sh
-  $ yarn add -D stylelint stylelint-config-recommended stylelint-junit-formatter stylelint-no-unsupported-browser-features stylelint-config-prettier stylelint-prettier
+  $ yarn add -D tslint-angular stylelint stylelint-config-recommended stylelint-junit-formatter stylelint-no-unsupported-browser-features stylelint-config-prettier stylelint-prettier
   ```
 
 #### Removed (if project generated without _--minimal=true_ option)
